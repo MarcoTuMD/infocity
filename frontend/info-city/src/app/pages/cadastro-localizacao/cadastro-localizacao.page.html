@@ -1,0 +1,34 @@
+
+<ion-header>
+  <ion-toolbar class="toolbar-verde">
+    <ion-buttons slot="start">
+      <ion-back-button  color="secondary" defaultHref="cadastro-dadospessoais"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <img class="logo" src="../../../assets/icon/logo2.png" alt="">
+  <div class="fundo">
+   <h1 class="titulo">Localização</h1>
+    <div class="form"  [formGroup]="formGroup">
+
+      <ion-item class="ion-margin">
+        <ion-label position="floating">Estado</ion-label>
+        <ion-select [(ngModel)]="usuario.cidade.estado.id" formControlName="estado" okText="Ok" cancelText="Cancelar" (ionChange)="getCidadesDoEstado()">
+          <ion-select-option value="{{estado.id}}" *ngFor="let estado of estados">{{estado.nome}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item class="ion-margin">
+        <ion-label position="floating">Cidade</ion-label>
+        <ion-select [(ngModel)]="usuario.cidade.id" formControlName="cidade" okText="Ok" cancelText="Cancelar">
+          <ion-select-option value="{{cidade.id}}" *ngFor="let cidade of cidadesEstado">{{cidade.nome}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-button expand="block" color="primary" class="ion-margin" shape="round" (click)="cadastrar()" [disabled]="!formGroup.valid">Concluir</ion-button>
+     
+    </div>
+  </div>
+
+</ion-content>
